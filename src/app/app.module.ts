@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AsyncObservableComponent } from './async-observable/async-observable.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AsyncObservableComponent
   ],
   imports: [
     BrowserModule,
