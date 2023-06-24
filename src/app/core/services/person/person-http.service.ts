@@ -2,19 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { MockService } from './mock.service';
+import { PersonMockService } from './person-mock.service';
 import { Person } from 'src/types/data.type';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class PersonHttpService {
 
-  constructor(private readonly http: HttpClient, private readonly mock: MockService) { }
+  constructor(
+    private readonly http: HttpClient,
+    private readonly mock: PersonMockService
+  ) { }
 
-  getData(): Observable<Person[]> {
+  getPersons(): Observable<Person[]> {
     if (environment.mockAPI) {
-      return this.mock.mockData();
+      return this.mock.getPersons();
     }
     else {
       return this.getRequest(environment.apiUrl);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MockService } from './core/services/mock.service';
 import { Person } from 'src/types/data.type';
+import { PersonService } from './core/services/person/person.service';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +12,15 @@ export class AppComponent  implements OnInit {
 
   peoples: Person[] = [];
 
-  constructor(private readonly mock: MockService) { }
+  constructor(
+    private readonly personService: PersonService
+  ) { }
 
   ngOnInit(): void {
-    this.mock.mockData().subscribe((data) => {
+    this.personService.getPersons().subscribe((data) => {
       this.peoples = data;
       console.log(this.peoples);
-      
     })
   };
-
 
 }

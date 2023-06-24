@@ -6,12 +6,12 @@ import { Person } from 'src/types/data.type';
 @Injectable({
   providedIn: 'root'
 })
-export class MockService {
+export class PersonMockService {
 
   constructor() { }
 
   // visszaadandó adat
-  mockData(): Observable<Person[]> {
+  getPersons(): Observable<Person[]> {
 
     let mockResponse: Person[] = [
       {
@@ -33,7 +33,6 @@ export class MockService {
         }
       }
     ];
-      
       
     return new Observable<Person[]>((observer) => {
       observer.next(mockResponse);
